@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ClickClock</string>
+    <string name="currentDateTime">MMM dd yy</string>
+    <string name="clockInOut">Clock In</string>
+    <string name="titleText">ClickClock</string>
+    <string name="timeCounter">0:00:00</string>
+    <string name="clocked_in">"Clocked in at "</string>
+    <string name="clocked_out">"Clocked out at "</string>
+    <string name="clock_out">Clock Out</string>
+    <string name="clock_in">Clock In</string>
+</resources>
