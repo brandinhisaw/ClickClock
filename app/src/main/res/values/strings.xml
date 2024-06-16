@@ -8,4 +8,13 @@
     <string name="clocked_out">"Clocked out at "</string>
     <string name="clock_out">Clock Out</string>
     <string name="clock_in">Clock In</string>
+    <string name="open_log_window">Open Log Window</string>
+    <string name="close_log_button">Close Log Button</string>
+    <string name="punch_card_log">Punch Card Log</string>
+    <string name="_4_hours_20_minutes">4 hours, 20 minutes</string>
+    <string name="edit_button">Edit Button</string>
+    <string name="delete_button">Delete Button</string>
+    <string name="punch_in_12_40_pm">Punch in: 12:40 pm</string>
+    <string name="punch_out_6_40_pm">Punch out: 6:40 pm</string>
+    <string name="november_12_2024">November 12, 2024</string>
 </resources>

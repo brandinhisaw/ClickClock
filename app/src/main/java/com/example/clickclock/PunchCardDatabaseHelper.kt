@@ -70,30 +70,30 @@ class PunchCardDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         return punchCardList
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getPunchCardById(itemId: Int): PunchCard {
-        val db = readableDatabase
-        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID = $itemId"
-        val cursor = db.rawQuery(query, null)
-        cursor.moveToFirst()
-
-        val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
-        val punchDate = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PUNCH_DATE)))
-        val punchInTime = LocalTime.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PUNCH_IN_TIME)))
-        val punchOutTime = LocalTime.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PUNCH_OUT_TIME)))
-        val duration = Duration.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DURATION)))
-
-        cursor.close()
-        db.close()
-        return PunchCard(id, punchDate, punchInTime, punchOutTime, duration)
-    }
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    fun getPunchCardById(itemId: Int): PunchCard {
+//        val db = readableDatabase
+//        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID = $itemId"
+//        val cursor = db.rawQuery(query, null)
+//        cursor.moveToFirst()
+//
+//        val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+//        val punchDate = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PUNCH_DATE)))
+//        val punchInTime = LocalTime.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PUNCH_IN_TIME)))
+//        val punchOutTime = LocalTime.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PUNCH_OUT_TIME)))
+//        val duration = Duration.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DURATION)))
+//
+//        cursor.close()
+//        db.close()
+//        return PunchCard(id, punchDate, punchInTime, punchOutTime, duration)
+//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getPunchCardsByDate(date: LocalDate): MutableList<PunchCard> {
         val punchCardList = mutableListOf<PunchCard>()
         val db = readableDatabase
         val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_PUNCH_DATE ='$date'"
-        Log.d("Query", query.toString())
+        Log.d("Query", query)
 
         val cursor = db.rawQuery(query, null)
         cursor.moveToFirst()
