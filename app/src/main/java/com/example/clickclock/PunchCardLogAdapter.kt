@@ -1,7 +1,7 @@
 package com.example.clickclock
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
@@ -41,6 +40,7 @@ class PunchCardLogAdapter(private var uniqueDateList: MutableList<LocalDate>, co
 
     override fun getItemCount(): Int = uniqueDateList.size
 
+    @SuppressLint("InflateParams")
     override fun onBindViewHolder(holder: DateHeaderViewHolder, position: Int) {
 
         holder.dateHeaderLinearLayout.removeAllViews()
@@ -55,7 +55,7 @@ class PunchCardLogAdapter(private var uniqueDateList: MutableList<LocalDate>, co
 
         holder.dateHeaderTextView.text = uniqueDateList[position].format(dateFormatter).toString()
 
-        Log.d("Punchcards in adapter", punchCards.toString())
+        Log.d("PunchCards in adapter", punchCards.toString())
 
 
         for (punchCard in punchCards)
@@ -76,12 +76,12 @@ class PunchCardLogAdapter(private var uniqueDateList: MutableList<LocalDate>, co
                 val builder = AlertDialog.Builder(parentContext)
                 builder.setTitle("Confirm Delete")
                 builder.setMessage("Do you want to delete this item?")
-                builder.setPositiveButton("Yes") { dialog, which ->
+                builder.setPositiveButton("Yes") { _, _ ->
                     db.deleteItem(punchCard.id)
                     notifyItemChanged(position)
                     Toast.makeText(parentContext, "Event Deleted", Toast.LENGTH_SHORT).show()
                 }
-                builder.setNegativeButton("No") { dialog, which ->
+                builder.setNegativeButton("No") { _, _ ->
                     Toast.makeText(parentContext, "Cancelled", Toast.LENGTH_SHORT).show()
                 }
 
